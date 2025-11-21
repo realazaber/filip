@@ -23,10 +23,13 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
+        $fname = fake()->firstName();
+        $lname = fake()->lastName();
+
         return [
-            'name' => fake()->name(),
-            'first_name' => fake()->firstName(),
-            'last_name' => fake()->lastName(),
+            'first_name' => $fname,
+            'last_name' => $lname,
+            'name' => $fname . ' ' . $lname,
             'date_of_birth' => fake()->date(),
             'phone' => fake()->unique()->phoneNumber(),
             'filament_user' => true,
