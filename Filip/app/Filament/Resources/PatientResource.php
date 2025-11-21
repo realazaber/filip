@@ -15,9 +15,13 @@ use Filament\Tables\Table;
 
 class PatientResource extends Resource
 {
+    use UserResource;
+
     protected static ?string $model = Patient::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'fas-user';
+
+    protected static string | array $routeMiddleware = [IsDoctor::class];
 
     protected static ?int $navigationSort = 3;
 

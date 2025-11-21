@@ -18,9 +18,10 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class ContactResource extends Resource
 {
+    use UserResource;
     protected static ?string $model = Contact::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-phone';
+    protected static ?string $navigationIcon = 'fas-phone';
 
     protected static ?int $navigationSort = 4;
 

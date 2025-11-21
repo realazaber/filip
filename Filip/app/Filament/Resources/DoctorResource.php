@@ -16,9 +16,10 @@ use Filament\Forms\Components\Grid;
 
 class DoctorResource extends Resource
 {
+    use UserResource;
     protected static ?string $model = Doctor::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-user';
+    protected static ?string $navigationIcon = 'fas-briefcase-medical';
 
     protected static ?int $navigationSort = 2;
 
