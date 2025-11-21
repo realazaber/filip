@@ -2,7 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Models\Patient;
+use Database\Seeders\demo\DemoContactSeeder;
+use Database\Seeders\demo\DemoDoctorSeeder;
+use Database\Seeders\demo\DemoPatientSeeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\App;
@@ -19,10 +21,9 @@ class DatabaseSeeder extends Seeder
         if (App::environment() == 'prod') {
         } else {
             $this->call([
-                UserSeeder::class,
-                PatientSeeder::class,
-                //DoctorSeeder::class,
-                //ContactSeeder::class,
+                DemoDoctorSeeder::class,
+                DemoPatientSeeder::class,
+                DemoContactSeeder::class,
             ]);
         }
     }
