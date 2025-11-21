@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\ContactResource\Pages;
 use App\Filament\Resources\ContactResource\RelationManagers;
 use App\Filament\Traits\UserCreateForm;
+use App\Filament\Traits\UserResource;
 use App\Models\Contact;
 use App\Models\Patient;
 use Filament\Forms;
@@ -65,13 +66,10 @@ class ContactResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('user.first_name')
+                Tables\Columns\TextColumn::make('user.full_name')
                     ->label('Name')
-                    ->searchable()
                     ->sortable()
-                    ->formatStateUsing(function ($state, Contact $contact) {
-                        return $contact->user->first_name . ' ' . $contact->user->last_name;
-                    }),
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('patient.user.first_name')
                     ->label('Patient')
                     ->searchable()

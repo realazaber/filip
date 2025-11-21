@@ -4,6 +4,8 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\PatientResource\Pages;
 use App\Filament\Traits\UserCreateForm;
+use App\Filament\Traits\UserResource;
+use App\Http\Middleware\IsDoctor;
 use App\Models\Patient;
 use Filament\Forms;
 use Filament\Forms\Components\Grid;
@@ -50,13 +52,10 @@ class PatientResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('user.first_name')
+                Tables\Columns\TextColumn::make('user.full_name')
                     ->label('Name')
-                    ->searchable()
                     ->sortable()
-                    ->formatStateUsing(function ($state, Patient $patient) {
-                        return $patient->user->first_name . ' ' . $patient->user->last_name;
-                    }),
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('user.created_at')
                     ->label('Created At')
                     ->date()

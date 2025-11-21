@@ -4,6 +4,8 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\DoctorResource\Pages;
 use App\Filament\Traits\UserCreateForm;
+use App\Filament\Traits\UserResource;
+use App\Http\Middleware\IsDoctor;
 use App\Models\Doctor;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -46,11 +48,10 @@ class DoctorResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('user.first_name')
+                Tables\Columns\TextColumn::make('user.full_name')
                     ->label('Name')
-                    ->formatStateUsing(function ($state, Doctor $doctor) {
-                        return $doctor->user->first_name . ' ' . $doctor->user->last_name;
-                    }),
+                    ->sortable()
+                    ->searchable(),
 
                 Tables\Columns\TextColumn::make('specialisation')
                     ->searchable(),

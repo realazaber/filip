@@ -60,6 +60,11 @@ class User extends Authenticatable implements FilamentUser
         ];
     }
 
+    public function getFullNameAttribute(): string
+    {
+        return "{$this->first_name} {$this->last_name}";
+    }
+
     public function doctor(): HasOne
     {
         return $this->hasOne(Doctor::class);
