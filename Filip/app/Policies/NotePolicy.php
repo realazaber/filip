@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\Doctor;
+use App\Models\Note;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 
-class DoctorPolicy
+class NotePolicy
 {
     /**
      * Determine whether the user can view any models.
@@ -19,7 +19,7 @@ class DoctorPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, Doctor $doctor): bool
+    public function view(User $user, Note $note): bool
     {
         return $user->doctor !== null;
     }
@@ -29,38 +29,38 @@ class DoctorPolicy
      */
     public function create(User $user): bool
     {
-        return $user->filament_user;
+        return $user->doctor !== null;
     }
 
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, Doctor $doctor): bool
+    public function update(User $user, Note $note): bool
     {
-        return $user->id === $doctor->user_id;
+        return $note->doctor_id === $user->doctor->id;
     }
 
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Doctor $doctor): bool
+    public function delete(User $user, Note $note): bool
     {
-        return $user->id === $doctor->user_id;
+        return $note->doctor_id === $user->doctor->id;
     }
 
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, Doctor $doctor): bool
+    public function restore(User $user, Note $note): bool
     {
-        return $user->doctor !== null;
+        return $note->doctor_id === $user->doctor->id;
     }
 
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, Doctor $doctor): bool
+    public function forceDelete(User $user, Note $note): bool
     {
-        return $user->doctor !== null;
+        return $note->doctor_id === $user->doctor->id;
     }
 }
