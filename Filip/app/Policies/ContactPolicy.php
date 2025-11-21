@@ -13,7 +13,7 @@ class ContactPolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user->doctor()->exists();
+        return $user->doctor !== null;
     }
 
     /**
@@ -21,7 +21,7 @@ class ContactPolicy
      */
     public function view(User $user, Contact $contact): bool
     {
-        return $user->doctor()->exists();
+        return $user->doctor !== null;
     }
 
     /**
@@ -29,7 +29,7 @@ class ContactPolicy
      */
     public function create(User $user): bool
     {
-        return $user->doctor()->exists();
+        return $user->doctor !== null;
     }
 
     /**
@@ -37,7 +37,7 @@ class ContactPolicy
      */
     public function update(User $user, Contact $contact): bool
     {
-        return $user->doctor()->exists();
+        return $user->doctor !== null;
     }
 
     /**
@@ -45,7 +45,7 @@ class ContactPolicy
      */
     public function delete(User $user, Contact $contact): bool
     {
-        return $user->doctor()->exists();
+        return $user->doctor !== null;
     }
 
     /**
@@ -53,7 +53,7 @@ class ContactPolicy
      */
     public function restore(User $user, Contact $contact): bool
     {
-        return $user->doctor()->exists();
+        return $user->doctor !== null;
     }
 
     /**
@@ -61,6 +61,6 @@ class ContactPolicy
      */
     public function forceDelete(User $user, Contact $contact): bool
     {
-        return $user->doctor()->exists();
+        return $user->doctor !== null;
     }
 }

@@ -13,7 +13,7 @@ class DoctorPolicy
      */
     public function viewAny(User $user): bool
     {
-        return true;
+        return $user->doctor !== null;
     }
 
     /**
@@ -21,7 +21,7 @@ class DoctorPolicy
      */
     public function view(User $user, Doctor $doctor): bool
     {
-        return true;
+        return $user->doctor !== null;
     }
 
     /**
