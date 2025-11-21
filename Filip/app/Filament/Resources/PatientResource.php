@@ -23,8 +23,6 @@ class PatientResource extends Resource
 
     protected static ?string $navigationIcon = 'fas-user';
 
-    protected static string | array $routeMiddleware = [IsDoctor::class];
-
     protected static ?int $navigationSort = 3;
 
 
